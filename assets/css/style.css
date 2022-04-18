@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+
+/* css variables/declarations */
+/* im using hsl to get more precise colors */
+/* hsl stands for Hue, Sturation, lightness */
+/* hsla is just like hsl but even more precise because you can change the opacity */
+
+:root {
+    --first-color: hsl(231, 48%, 56%);
+    --title-color: hsl(231, 24%, 20%);
+    --text-color: hsl(231, 4%, 45%);
+    --body-color: hsl(231, 100%, 99%);
+    --shadow-color: 0 8px 32px hsla(231, 44%, 45%, .2);
+
+    --container-color: #fff;
+
+    /* font */
+    --body-font: 'Poppins', sans-serif;
+    --small-font-size: .625rem;
+}
+
+@media screen and (min-width: 975px) {
+    :root {
+        --small-font-size: .650rem;
+    }
+}
+
+/* borders will not overflow or overlap with setting the '*' element to border-box */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    /* Using css variables i declared in the root */
+    font-family: var(--body-font);
+    background-color: var(--body-color);
+    color: var(--text-color);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.box {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.left {
+    color: var(--body-color);
+    background-color: var(--first-color);
+    width: 400px;
+    padding: 1.5rem;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-color);
+    text-align: center;
+    width: 400px;
+    padding: 1.5rem;
+    border-radius: 0px 10px 10px 0px;
+}
+
+label, .right h3 {
+    color: var(--title-color);
+    text-align: left;
+}
+
+input {
+    border: 0;
+    box-shadow: var(--shadow-color);
+    padding: .75rem;
+    margin: .625rem;
+    border-radius: 5px;
+}
+
+.container {
+    max-width: 100%;
+    margin: 1.5rem;
+}
+
+.container section {
+    height: 100vh;
+    padding: 2rem;
+}
+
+.container h2 {
+    text-align: center;
+    color: var(--title-color);
+}
+
+/* navbar */
+.nav {
+    position: fixed;
+    bottom: 2rem;
+    left: 0;
+    right: 0;
+    width: 329px;
+    height: 70px;
+
+    /* a real subtle shadow you dont see immediatly */
+    /* this will be my use of using a border instead */
+    box-shadow: var(--shadow-color);
+    margin: 0 auto;
+    padding: 1.5rem .5rem;
+    border-radius: .65rem;
+    overflow: hidden;
+}
+
+/* the whole list */
+.nav-list {
+    display: flex;
+    justify-content: center;
+    column-gap: 2rem;
+}
+
+/* making the text and icons line up in a flex direction of column */
+.nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* making more beuatifull and clear icons */
+.nav-link i {
+    font-size: 1.5rem;
+    color: var(--title-color);
+    z-index: 20;
+    transition: .3s;
+}
+
+.nav-name {
+    font-size: var(--small-font-size);
+    position: absolute;
+    font-weight: 500;
+    transform: translateY(45px);
+    color: var(--body-color);
+    z-index: 20;
+    transition: .4s;
+    opacity: 0;
+}
+
+.indicator {
+    position: absolute;
+    left: 5px;
+    bottom: 0;
+    fill: var(--first-color);
+    transition: .3s;
+}
+
+.active-link i {
+    color: var(--body-color);
+}
+
+.active-link .nav-name {
+    opacity: 1;
+    transform: translateY(25px);
+}
+
+.nav-link:nth-child(1).active-link ~ .indicator {
+    transform: translateX(calc(56px * 0));
+}
+
+.nav-link:nth-child(2).active-link ~ .indicator {
+    transform: translateX(calc(56px * 1));
+}
+
+.nav-link:nth-child(3).active-link ~ .indicator {
+    transform: translateX(calc(56px * 2));
+}
+
+.nav-link:nth-child(4).active-link ~ .indicator {
+    transform: translateX(calc(56px * 3));
+}
+
+.nav-link:nth-child(5).active-link ~ .indicator {
+    transform: translateX(calc(56px * 4));
+}
+
+img {
+    margin: 10%;
+    border-radius: 5%;
+    box-shadow: var(--shadow-color);
+}
+
+h3 ~ label, .left p {
+    margin-top: 10%;
+}
